@@ -1,0 +1,27 @@
+<html>
+    <head>
+        <script src="dist/codemirror-compose-change.umd.js"></script>
+
+        <link rel="stylesheet" href="https://codemirror.net/lib/codemirror.css">
+        <script src="https://codemirror.net/lib/codemirror.js"></script>
+    </head>
+
+    <body>
+        <h1>CodeMirror test page</h1>
+
+        <div id="code"></div>
+
+        <style type="text/css">
+         .CodeMirror {
+             border: solid 1px darkgray;
+         }
+        </style>
+
+        <script>
+         var cm = CodeMirror(document.getElementById("code"), {
+           lineNumbers: true,
+           value: ""
+         });
+        </script>
+    </body>
+</html>
