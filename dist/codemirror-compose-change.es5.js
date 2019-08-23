@@ -18581,13 +18581,14 @@ function runAll() {
     testExample9();
 }
 
-var Main = /** @class */ (function () {
-    function Main() {
+// Load the script in a browser and use the static methods on this class to run tests
+var TestRunner = /** @class */ (function () {
+    function TestRunner() {
     }
-    Main.runFixedTests = function () {
+    TestRunner.runFixedTests = function () {
         runAll();
     };
-    Main.runRandomTests = function (repeats, delay) {
+    TestRunner.runRandomTests = function (repeats, delay) {
         var _this = this;
         if (repeats === void 0) { repeats = 1; }
         if (delay === void 0) { delay = 1000; }
@@ -18610,7 +18611,7 @@ var Main = /** @class */ (function () {
             });
         });
     };
-    Main.repeatLastTest = function () {
+    TestRunner.repeatLastTest = function () {
         var change1 = window["lastChange1"];
         var change2 = window["lastChange2"];
         if (!change1 || !change2)
@@ -18630,11 +18631,10 @@ var Main = /** @class */ (function () {
             }, 1000);
         }, 1000);
     };
-    return Main;
+    return TestRunner;
 }());
 var composeChanges$1 = composeChanges;
 var preEditToPostEditChangeRange$1 = preEditToPostEditChangeRange;
 
-export default Main;
-export { composeChanges$1 as composeChanges, preEditToPostEditChangeRange$1 as preEditToPostEditChangeRange };
+export { TestRunner, composeChanges$1 as composeChanges, preEditToPostEditChangeRange$1 as preEditToPostEditChangeRange };
 //# sourceMappingURL=codemirror-compose-change.es5.js.map

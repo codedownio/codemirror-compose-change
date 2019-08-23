@@ -6,7 +6,8 @@ import {makeRandomEditAndGetChange, setAlphabeticalContent, setRandomContent} fr
 import {testChanges} from "./TestCore";
 import {getCodeMirror} from "./Util";
 
-export default class Main {
+// Load the script in a browser and use the static methods on this class to run tests
+export class TestRunner {
   static runFixedTests() {
     runAll();
   }

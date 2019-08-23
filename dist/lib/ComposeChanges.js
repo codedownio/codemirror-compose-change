@@ -11,9 +11,9 @@ var __assign = (this && this.__assign) || function () {
     return __assign.apply(this, arguments);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-var Util_1 = require("./Util");
-var CoordinateChanges_1 = require("./CoordinateChanges");
 var lodash_es_1 = require("lodash-es");
+var CoordinateChanges_1 = require("./CoordinateChanges");
+var Util_1 = require("./Util");
 /**
  * Given two changes, compose them to make another change that would have the exact same effect, if applied.
  * This is used to combine the changes produced by several OT operations into a single, more sensible change

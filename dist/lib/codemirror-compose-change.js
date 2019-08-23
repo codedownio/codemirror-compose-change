@@ -6,13 +6,14 @@ var FixedTests_1 = require("./FixedTests");
 var RandomEdits_1 = require("./RandomEdits");
 var TestCore_1 = require("./TestCore");
 var Util_1 = require("./Util");
-var Main = /** @class */ (function () {
-    function Main() {
+// Load the script in a browser and use the static methods on this class to run tests
+var TestRunner = /** @class */ (function () {
+    function TestRunner() {
     }
-    Main.runFixedTests = function () {
+    TestRunner.runFixedTests = function () {
         FixedTests_1.runAll();
     };
-    Main.runRandomTests = function (repeats, delay) {
+    TestRunner.runRandomTests = function (repeats, delay) {
         var _this = this;
         if (repeats === void 0) { repeats = 1; }
         if (delay === void 0) { delay = 1000; }
@@ -35,7 +36,7 @@ var Main = /** @class */ (function () {
             });
         });
     };
-    Main.repeatLastTest = function () {
+    TestRunner.repeatLastTest = function () {
         var change1 = window["lastChange1"];
         var change2 = window["lastChange2"];
         if (!change1 || !change2)
@@ -55,9 +56,9 @@ var Main = /** @class */ (function () {
             }, 1000);
         }, 1000);
     };
-    return Main;
+    return TestRunner;
 }());
-exports.default = Main;
+exports.TestRunner = TestRunner;
 exports.composeChanges = ComposeChanges.composeChanges;
 exports.preEditToPostEditChangeRange = CoordinateChanges.preEditToPostEditChangeRange;
 //# sourceMappingURL=codemirror-compose-change.js.map

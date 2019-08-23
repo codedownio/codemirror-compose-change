@@ -1,4 +1,6 @@
 
+import {FromTo} from "./Types";
+
 // Return negative / 0 / positive.  a < b iff posCmp(a, b) < 0 etc.
 export function posCmp(a: CodeMirror.Position, b: CodeMirror.Position) {
   return (a.line - b.line) || (a.ch - b.ch);

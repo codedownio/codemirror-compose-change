@@ -1,9 +1,9 @@
 
-import {posCmp, posInsideRangeInclusive, rangesEqual} from "./Util";
+import {last} from "lodash-es";
 
 import {convertPointToAfterChange, convertPointToBeforeChange, preEditToPostEditChangeRange} from "./CoordinateChanges";
-
-import {last} from "lodash-es";
+import {FromTo} from "./Types";
+import {posCmp, posInsideRangeInclusive, rangesEqual} from "./Util";
 
 /**
  * Given two changes, compose them to make another change that would have the exact same effect, if applied.

@@ -1,6 +1,7 @@
 
 import {last} from "lodash-es";
 
+import {FromTo} from "./Types";
 import {posCmp} from "./Util";
 
 export function convertPointToBeforeChange(point: CodeMirror.Position, change: CodeMirror.EditorChange): CodeMirror.Position {
