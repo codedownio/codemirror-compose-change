@@ -18635,6 +18635,8 @@ var TestRunner = /** @class */ (function () {
 }());
 var composeChanges$1 = composeChanges;
 var preEditToPostEditChangeRange$1 = preEditToPostEditChangeRange;
+var convertPointToAfterChange$1 = convertPointToAfterChange;
+var convertPointToBeforeChange$1 = convertPointToBeforeChange;
 
-export { TestRunner, composeChanges$1 as composeChanges, preEditToPostEditChangeRange$1 as preEditToPostEditChangeRange };
+export { TestRunner, composeChanges$1 as composeChanges, preEditToPostEditChangeRange$1 as preEditToPostEditChangeRange, convertPointToAfterChange$1 as convertPointToAfterChange, convertPointToBeforeChange$1 as convertPointToBeforeChange };
 //# sourceMappingURL=codemirror-compose-change.es5.js.map

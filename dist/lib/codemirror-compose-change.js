@@ -61,4 +61,6 @@ var TestRunner = /** @class */ (function () {
 exports.TestRunner = TestRunner;
 exports.composeChanges = ComposeChanges.composeChanges;
 exports.preEditToPostEditChangeRange = CoordinateChanges.preEditToPostEditChangeRange;
+exports.convertPointToAfterChange = CoordinateChanges.convertPointToAfterChange;
+exports.convertPointToBeforeChange = CoordinateChanges.convertPointToBeforeChange;
 //# sourceMappingURL=codemirror-compose-change.js.map

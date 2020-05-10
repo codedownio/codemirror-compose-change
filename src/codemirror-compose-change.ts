@@ -65,3 +65,5 @@ export class TestRunner {
 
 export const composeChanges = ComposeChanges.composeChanges;
 export const preEditToPostEditChangeRange = CoordinateChanges.preEditToPostEditChangeRange;
+export const convertPointToAfterChange = CoordinateChanges.convertPointToAfterChange;
+export const convertPointToBeforeChange = CoordinateChanges.convertPointToBeforeChange;

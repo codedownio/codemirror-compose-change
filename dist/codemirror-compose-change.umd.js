@@ -18641,10 +18641,14 @@
   }());
   var composeChanges$1 = composeChanges;
   var preEditToPostEditChangeRange$1 = preEditToPostEditChangeRange;
+  var convertPointToAfterChange$1 = convertPointToAfterChange;
+  var convertPointToBeforeChange$1 = convertPointToBeforeChange;
 
   exports.TestRunner = TestRunner;
   exports.composeChanges = composeChanges$1;
   exports.preEditToPostEditChangeRange = preEditToPostEditChangeRange$1;
+  exports.convertPointToAfterChange = convertPointToAfterChange$1;
+  exports.convertPointToBeforeChange = convertPointToBeforeChange$1;
 
   Object.defineProperty(exports, '__esModule', { value: true });
 

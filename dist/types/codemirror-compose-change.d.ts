@@ -7,3 +7,5 @@ export declare class TestRunner {
 }
 export declare const composeChanges: typeof ComposeChanges.composeChanges;
 export declare const preEditToPostEditChangeRange: typeof CoordinateChanges.preEditToPostEditChangeRange;
+export declare const convertPointToAfterChange: typeof CoordinateChanges.convertPointToAfterChange;
+export declare const convertPointToBeforeChange: typeof CoordinateChanges.convertPointToBeforeChange;
