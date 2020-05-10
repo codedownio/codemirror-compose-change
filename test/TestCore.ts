@@ -1,6 +1,6 @@
 
-import {composeChanges} from "./ComposeChanges";
-import {applyChange, reverseApplyChange} from "./CoordinateChanges";
+import {composeChanges} from "../src/ComposeChanges";
+import {applyChange, reverseApplyChange} from "../src/CoordinateChanges";
 
 export function testChanges(cm: CodeMirror.Doc, originalContent: string, change1: CodeMirror.EditorChange, change2: CodeMirror.EditorChange) {
   console.log("Got changes 1 and 2", change1, change2);

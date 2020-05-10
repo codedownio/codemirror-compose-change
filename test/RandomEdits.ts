@@ -1,9 +1,8 @@
 
-import {preEditToPostEditChangeRange} from "./CoordinateChanges";
+import * as lodash from "lodash";
+const isEqual = lodash.isEqual;
 
-import {isEqual} from "lodash-es";
-
-import {randomString} from "./Util";
+import {randomString} from "../src/Util";
 
 export function makeRandomEditAndGetChange(cm: CodeMirror.Doc, delayMs = 0): Promise<CodeMirror.EditorChange> {
   if (cm.getValue().length === 0) {

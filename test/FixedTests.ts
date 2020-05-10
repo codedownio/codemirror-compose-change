@@ -1,5 +1,5 @@
 
-import {applyChange} from "./CoordinateChanges";
+import {applyChange} from "../src/CoordinateChanges";
 import {setAlphabeticalContent} from "./RandomEdits";
 import {testChanges} from "./TestCore";
 import {getCodeMirror} from "./Util";

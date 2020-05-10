@@ -1,10 +1,8 @@
 
-import {last} from "lodash-es";
-
 import {FromTo} from "./Types";
-import {posCmp} from "./Util";
+import {last, posCmp} from "./Util";
 
-export function convertPointToBeforeChange(point: CodeMirror.Position, change: CodeMirror.EditorChange): CodeMirror.Position {
+export function convertPointToBeforeChange(point: CodeMirror.Position, change: CodeMirror.EditorChange): CodeMirror.Position | null {
   let linesInserted = change.text.length - change.removed.length;
   let line = point.line - linesInserted;
 
@@ -23,14 +21,15 @@ export function convertPointToBeforeChange(point: CodeMirror.Position, change: C
       ch: point.ch + adjustCh(change, removed, inserted)
     };
   } else if (posCmp(point, change.from) < 0) {
-    console.error("Warning: tried to convert point to before change but it was before change.from");
+    // Tried to convert point to before change but it was before change.from
     return point;
   } else {
-    console.error("Tried to transform point that was inside of change");
+    // Tried to transform point that was inside of change
+    return null;
   }
 }
 
-export function convertPointToAfterChange(point: CodeMirror.Position, change: CodeMirror.EditorChange): CodeMirror.Position {
+export function convertPointToAfterChange(point: CodeMirror.Position, change: CodeMirror.EditorChange): CodeMirror.Position | null {
   let linesInserted = change.text.length - change.removed.length;
   let line = point.line + linesInserted;
 
@@ -42,10 +41,11 @@ export function convertPointToAfterChange(point: CodeMirror.Position, change: Co
       ch: point.ch + adjustCh(change, change.removed, change.text)
     };
   } else if (posCmp(point, change.from) < 0) {
-    console.error("Warning: tried to convert point to after change but it was before change.from");
+    // Tried to convert point to after change but it was before change.from
     return point;
   } else {
-    console.error("Tried to transform point that was inside of change");
+    // Point was inside of change
+    return null;
   }
 }
 

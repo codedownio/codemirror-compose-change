@@ -10,8 +10,14 @@ var __assign = (this && this.__assign) || function () {
     };
     return __assign.apply(this, arguments);
 };
+var __spreadArrays = (this && this.__spreadArrays) || function () {
+    for (var s = 0, i = 0, il = arguments.length; i < il; i++) s += arguments[i].length;
+    for (var r = Array(s), k = 0, i = 0; i < il; i++)
+        for (var a = arguments[i], j = 0, jl = a.length; j < jl; j++, k++)
+            r[k] = a[j];
+    return r;
+};
 Object.defineProperty(exports, "__esModule", { value: true });
-var lodash_es_1 = require("lodash-es");
 var CoordinateChanges_1 = require("./CoordinateChanges");
 var Util_1 = require("./Util");
 /**
@@ -27,7 +33,7 @@ function composeChanges(cm, oldChange, change) {
         // There are 5 possible types of overlap
         if (Util_1.rangesEqual(affectedMiddle, change)) {
             // The new change perfectly overwrites whatever the old change put there
-            return __assign({}, oldChange, { text: change.text });
+            return __assign(__assign({}, oldChange), { text: change.text });
         }
         else if (rangeContains(affectedMiddle, change)) {
             // The second change is entirely within the text inserted by the first change
@@ -168,13 +174,13 @@ function rangeContains(range1, range2) {
 }
 function joinWithoutNewlines(list1, list2) {
     var ret = list1.slice(0, list1.length - 1);
-    ret.push(lodash_es_1.last(list1) + list2[0]);
+    ret.push(Util_1.last(list1) + list2[0]);
     ret.push.apply(ret, list2.slice(1));
     return ret;
 }
 function splitTextAt(text, line, ch) {
-    var firstPart = text.slice(0, line).concat([text[line].slice(0, ch)]);
-    var secondPart = [text[line].slice(ch)].concat(text.slice(line + 1));
+    var firstPart = __spreadArrays(text.slice(0, line), [text[line].slice(0, ch)]);
+    var secondPart = __spreadArrays([text[line].slice(ch)], text.slice(line + 1));
     return [firstPart, secondPart];
 }
 function splitTextByPositionDifference(text, furtherPos, earlierPos) {

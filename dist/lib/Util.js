@@ -26,13 +26,8 @@ function randomString(length, chars) {
     return result;
 }
 exports.randomString = randomString;
-function getCodeMirror() {
-    var elem = document.querySelector(".CodeMirror");
-    if (!elem)
-        throw new Error("Couldn't find CodeMirror elem");
-    if (!elem["CodeMirror"])
-        throw new Error("Couldn't find CodeMirror");
-    return elem["CodeMirror"];
+function last(x) {
+    return x[x.length - 1];
 }
-exports.getCodeMirror = getCodeMirror;
+exports.last = last;
 //# sourceMappingURL=Util.js.map
