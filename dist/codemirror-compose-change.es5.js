@@ -17965,11 +17965,12 @@ function convertPointToBeforeChange(point, change) {
         };
     }
     else if (posCmp(point, change.from) < 0) {
-        console.error("Warning: tried to convert point to before change but it was before change.from");
+        // Tried to convert point to before change but it was before change.from
         return point;
     }
     else {
-        console.error("Tried to transform point that was inside of change");
+        // Tried to transform point that was inside of change
+        return null;
     }
 }
 function convertPointToAfterChange(point, change) {
@@ -17985,11 +17986,12 @@ function convertPointToAfterChange(point, change) {
         };
     }
     else if (posCmp(point, change.from) < 0) {
-        console.error("Warning: tried to convert point to after change but it was before change.from");
+        // Tried to convert point to after change but it was before change.from
         return point;
     }
     else {
-        console.error("Tried to transform point that was inside of change");
+        // Point was inside of change
+        return null;
     }
 }
 function adjustCh(change, removed, inserted) {
