@@ -1,7 +1,7 @@
 
 import {preEditToPostEditChangeRange} from "./CoordinateChanges";
 
-import {isEqual} from "lodash-es";
+import isEqual from "lodash-es/isEqual.js";
 
 import {randomString} from "./Util";
 

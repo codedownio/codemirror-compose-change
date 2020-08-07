@@ -1,5 +1,5 @@
 
-import {last} from "lodash-es";
+import last from "lodash-es/last.js";
 
 import {FromTo} from "./Types";
 import {posCmp} from "./Util";

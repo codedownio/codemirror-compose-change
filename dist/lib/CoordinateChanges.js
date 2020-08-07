@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-var lodash_es_1 = require("lodash-es");
+var last_js_1 = require("lodash-es/last.js");
 var Util_1 = require("./Util");
 function convertPointToBeforeChange(point, change) {
     var linesInserted = change.text.length - change.removed.length;
@@ -55,26 +55,26 @@ function adjustCh(change, removed, inserted) {
     var ch = 0;
     if (removed.length === 1 && inserted.length > 1) {
         // Single remove multiple insert
-        ch -= lodash_es_1.last(removed).length;
-        ch += lodash_es_1.last(inserted).length;
+        ch -= last_js_1.default(removed).length;
+        ch += last_js_1.default(inserted).length;
         ch -= change.from.ch;
     }
     else if (removed.length === 1 && inserted.length === 1) {
         // Single remove single insert
-        ch -= lodash_es_1.last(removed).length;
-        ch += lodash_es_1.last(inserted).length;
+        ch -= last_js_1.default(removed).length;
+        ch += last_js_1.default(inserted).length;
     }
     else if (removed.length > 1 && inserted.length === 1) {
         // Multiple remove single insert
         // If multiple lines were removed, and only one was added, then ch gets bumped forward by change.from.ch
-        ch -= lodash_es_1.last(removed).length;
-        ch += lodash_es_1.last(inserted).length;
+        ch -= last_js_1.default(removed).length;
+        ch += last_js_1.default(inserted).length;
         ch += change.from.ch;
     }
     else if (removed.length > 1 && inserted.length > 1) {
         // Multiple remove multiple insert
-        ch -= lodash_es_1.last(removed).length;
-        ch += lodash_es_1.last(inserted).length;
+        ch -= last_js_1.default(removed).length;
+        ch += last_js_1.default(inserted).length;
     }
     return ch;
 }
@@ -82,10 +82,10 @@ function preEditToPostEditChangeRange(change) {
     var line = change.from.line + change.text.length - 1;
     var ch;
     if (change.text.length === 1) {
-        ch = change.from.ch + lodash_es_1.last(change.text).length;
+        ch = change.from.ch + last_js_1.default(change.text).length;
     }
     else {
-        ch = lodash_es_1.last(change.text).length;
+        ch = last_js_1.default(change.text).length;
     }
     var to = { line: line, ch: ch };
     return {

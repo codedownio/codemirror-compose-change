@@ -1,5 +1,5 @@
 
-import {last} from "lodash-es";
+import last from "lodash-es/last.js";
 
 import {convertPointToAfterChange, convertPointToBeforeChange, preEditToPostEditChangeRange} from "./CoordinateChanges";
 import {FromTo} from "./Types";

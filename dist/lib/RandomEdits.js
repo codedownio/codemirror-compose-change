@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-var lodash_es_1 = require("lodash-es");
+var isEqual_js_1 = require("lodash-es/isEqual.js");
 var Util_1 = require("./Util");
 function makeRandomEditAndGetChange(cm, delayMs) {
     if (delayMs === void 0) { delayMs = 0; }
@@ -22,7 +22,7 @@ function makeRandomEditAndGetChange(cm, delayMs) {
         cm.on("change", onChange);
         var pos1 = getRandomPosition(cm);
         var pos2 = getRandomPosition(cm);
-        while (lodash_es_1.isEqual(pos2, pos1))
+        while (isEqual_js_1.default(pos2, pos1))
             pos2 = getRandomPosition(cm);
         var replaceWith = Util_1.randomString(Math.round(Math.random() * 10), "wxyz\n");
         // let replaceWith = "";
