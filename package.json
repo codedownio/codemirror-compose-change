@@ -1,6 +1,6 @@
 {
-  "name": "codemirror-compose-change",
-  "version": "0.0.0",
+  "name": "@codedown/codemirror-compose-change",
+  "version": "1.0.0",
   "description": "",
   "keywords": [],
   "main": "dist/codemirror-compose-change.umd.js",
@@ -12,7 +12,7 @@
   "author": "Tom McLaughlin <pyro777@gmail.com>",
   "repository": {
     "type": "git",
-    "url": ""
+    "url": "https://github.com/codedownio/codemirror-compose-change"
   },
   "license": "MIT",
   "engines": {
@@ -26,7 +26,6 @@
     "test": "jest --coverage",
     "test:watch": "jest --coverage --watch",
     "test:prod": "npm run lint && npm run test -- --no-cache",
-    "deploy-docs": "ts-node tools/gh-pages-publish",
     "report-coverage": "cat ./coverage/lcov.info | coveralls",
     "commit": "git-cz",
     "semantic-release": "semantic-release",
@@ -76,14 +75,7 @@
     "semi": false,
     "singleQuote": true
   },
-  "commitlint": {
-    "extends": [
-      "@commitlint/config-conventional"
-    ]
-  },
   "devDependencies": {
-    "@commitlint/cli": "^7.1.2",
-    "@commitlint/config-conventional": "^7.1.2",
     "@types/codemirror": "0.0.76",
     "@types/jest": "^23.3.2",
     "@types/lodash-es": "^4.17.3",
@@ -93,7 +85,6 @@
     "coveralls": "^3.0.2",
     "cross-env": "^5.2.0",
     "cz-conventional-changelog": "^2.1.0",
-    "husky": "^1.0.1",
     "jest": "^23.6.0",
     "jest-config": "^23.6.0",
     "lint-staged": "^8.0.0",
