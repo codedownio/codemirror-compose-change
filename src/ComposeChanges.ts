@@ -1,9 +1,8 @@
 
-import last from "lodash-es/last.js";
 
 import {convertPointToAfterChange, convertPointToBeforeChange, preEditToPostEditChangeRange} from "./CoordinateChanges";
 import {FromTo} from "./Types";
-import {posCmp, posInsideRangeInclusive, rangesEqual} from "./Util";
+import {last, posCmp, posInsideRangeInclusive, rangesEqual} from "./Util";
 
 /**
  * Given two changes, compose them to make another change that would have the exact same effect, if applied.

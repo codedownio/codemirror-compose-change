@@ -6,3 +6,4 @@ export declare function posInsideRangeInclusive(pos: CodeMirror.Position, range:
 export declare function rangesEqual(range1: FromTo, range2: FromTo): boolean;
 export declare function randomString(length: number, chars?: string): string;
 export declare function getCodeMirror(): CodeMirror.Doc;
+export declare function last<T>(array: T[]): T | undefined;

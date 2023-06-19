@@ -32,3 +32,8 @@ export function getCodeMirror(): CodeMirror.Doc {
   if (!elem["CodeMirror"]) throw new Error("Couldn't find CodeMirror");
   return elem["CodeMirror"];
 }
+
+export function last<T>(array: T[]): T | undefined {
+  var length = array == null ? 0 : array.length;
+  return length ? array[length - 1] : undefined;
+}

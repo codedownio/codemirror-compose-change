@@ -4,25 +4,6 @@
   (factory((global.codemirrorComposeChange = {})));
 }(this, (function (exports) { 'use strict';
 
-  /**
-   * Gets the last element of `array`.
-   *
-   * @static
-   * @memberOf _
-   * @since 0.1.0
-   * @category Array
-   * @param {Array} array The array to query.
-   * @returns {*} Returns the last element of `array`.
-   * @example
-   *
-   * _.last([1, 2, 3]);
-   * // => 3
-   */
-  function last(array) {
-    var length = array == null ? 0 : array.length;
-    return length ? array[length - 1] : undefined;
-  }
-
   // Return negative / 0 / positive.  a < b iff posCmp(a, b) < 0 etc.
   function posCmp(a, b) {
       return (a.line - b.line) || (a.ch - b.ch);
@@ -32,6 +13,10 @@
   }
   function rangesEqual(range1, range2) {
       return (posCmp(range1.from, range2.from) === 0) && (posCmp(range1.to, range2.to) === 0);
+  }
+  function last(array) {
+      var length = array == null ? 0 : array.length;
+      return length ? array[length - 1] : undefined;
   }
 
   function convertPointToBeforeChange(point, change) {
@@ -316,56 +301,6 @@
       return splitTextAt(text, furtherPos.line - earlierPos.line, furtherPos.line === earlierPos.line ? furtherPos.ch - earlierPos.ch : furtherPos.ch);
   }
 
-  // Load the script in a browser and use the static methods on this class to run tests
-  // import {runAll} from "./FixedTests";
-  // import {makeRandomEditAndGetChange, setAlphabeticalContent, setRandomContent} from "./RandomEdits";
-  // import {testChanges} from "./TestCore";
-  // import {getCodeMirror} from "./Util";
-  // Keep this commented when building dist so test stuff doesn't end up in the bundle
-  // export class TestRunner {
-  //   static runFixedTests() {
-  //     runAll();
-  //   }
-  //   static runRandomTests(repeats=1, delay=1000) {
-  //     if (repeats === 0) {
-  //       console.log("No further repeats to run!");
-  //       return;
-  //     }
-  //     console.log("Test repeats remaining: " + repeats);
-  //     let cm = getCodeMirror();
-  //     // Fill in random content
-  //     setRandomContent(cm);
-  //     // setAlphabeticalContent(cm);
-  //     let originalContent = cm.getValue();
-  //     makeRandomEditAndGetChange(cm, delay).then((change1) => {
-  //       makeRandomEditAndGetChange(cm, delay).then((change2) => {
-  //         window["lastChange1"] = change1;
-  //         window["lastChange2"] = change2;
-  //         testChanges(cm, originalContent, change1, change2);
-  //         this.runRandomTests(repeats - 1, delay);
-  //       });
-  //     })
-  //   }
-  //   static repeatLastTest() {
-  //     let change1 = window["lastChange1"];
-  //     let change2 = window["lastChange2"];
-  //     if (!change1 || !change2) return console.error("Couldn't find changes to repeat");
-  //     let cm = getCodeMirror();
-  //     setAlphabeticalContent(cm);
-  //     let originalContent = cm.getValue();
-  //     cm.setSelection(change1.from, change1.to);
-  //     setTimeout(() => {
-  //       cm.replaceRange(change1.text, change1.from, change1.to);
-  //       setTimeout(() => {
-  //         cm.setSelection(change2.from, change2.to);
-  //         setTimeout(() => {
-  //           cm.replaceRange(change2.text, change2.from, change2.to);
-  //           testChanges(cm, originalContent, change1, change2);
-  //         }, 1000);
-  //       }, 1000);
-  //     }, 1000);
-  //   }
-  // }
   var composeChanges$1 = composeChanges;
   var preEditToPostEditChangeRange$1 = preEditToPostEditChangeRange;
   var convertPointToAfterChange$1 = convertPointToAfterChange;

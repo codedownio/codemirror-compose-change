@@ -11,7 +11,6 @@ var __assign = (this && this.__assign) || function () {
     return __assign.apply(this, arguments);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-var last_js_1 = require("lodash-es/last.js");
 var CoordinateChanges_1 = require("./CoordinateChanges");
 var Util_1 = require("./Util");
 /**
@@ -168,7 +167,7 @@ function rangeContains(range1, range2) {
 }
 function joinWithoutNewlines(list1, list2) {
     var ret = list1.slice(0, list1.length - 1);
-    ret.push(last_js_1.default(list1) + list2[0]);
+    ret.push(Util_1.last(list1) + list2[0]);
     ret.push.apply(ret, list2.slice(1));
     return ret;
 }

@@ -1,8 +1,6 @@
 
-import last from "lodash-es/last.js";
-
 import {FromTo} from "./Types";
-import {posCmp} from "./Util";
+import {last, posCmp} from "./Util";
 
 export function convertPointToBeforeChange(point: CodeMirror.Position, change: CodeMirror.EditorChange): CodeMirror.Position | null {
   let linesInserted = change.text.length - change.removed.length;
