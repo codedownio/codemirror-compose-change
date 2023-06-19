@@ -18,23 +18,6 @@ function rangesEqual(range1, range2) {
     return (posCmp(range1.from, range2.from) === 0) && (posCmp(range1.to, range2.to) === 0);
 }
 exports.rangesEqual = rangesEqual;
-function randomString(length, chars) {
-    if (chars === void 0) { chars = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"; }
-    var result = "";
-    for (var i = length; i > 0; --i)
-        result += chars[Math.floor(Math.random() * chars.length)];
-    return result;
-}
-exports.randomString = randomString;
-function getCodeMirror() {
-    var elem = document.querySelector(".CodeMirror");
-    if (!elem)
-        throw new Error("Couldn't find CodeMirror elem");
-    if (!elem["CodeMirror"])
-        throw new Error("Couldn't find CodeMirror");
-    return elem["CodeMirror"];
-}
-exports.getCodeMirror = getCodeMirror;
 function last(array) {
     var length = array == null ? 0 : array.length;
     return length ? array[length - 1] : undefined;

@@ -1,3 +1,29 @@
+/*! *****************************************************************************
+Copyright (c) Microsoft Corporation. All rights reserved.
+Licensed under the Apache License, Version 2.0 (the "License"); you may not use
+this file except in compliance with the License. You may obtain a copy of the
+License at http://www.apache.org/licenses/LICENSE-2.0
+
+THIS CODE IS PROVIDED ON AN *AS IS* BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+KIND, EITHER EXPRESS OR IMPLIED, INCLUDING WITHOUT LIMITATION ANY IMPLIED
+WARRANTIES OR CONDITIONS OF TITLE, FITNESS FOR A PARTICULAR PURPOSE,
+MERCHANTABLITY OR NON-INFRINGEMENT.
+
+See the Apache Version 2.0 License for specific language governing permissions
+and limitations under the License.
+***************************************************************************** */
+
+var __assign = function() {
+    __assign = Object.assign || function __assign(t) {
+        for (var s, i = 1, n = arguments.length; i < n; i++) {
+            s = arguments[i];
+            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p)) t[p] = s[p];
+        }
+        return t;
+    };
+    return __assign.apply(this, arguments);
+};
+
 // Return negative / 0 / positive.  a < b iff posCmp(a, b) < 0 etc.
 function posCmp(a, b) {
     return (a.line - b.line) || (a.ch - b.ch);
@@ -102,32 +128,15 @@ function preEditToPostEditChangeRange(change) {
         to: to
     };
 }
-
-/*! *****************************************************************************
-Copyright (c) Microsoft Corporation. All rights reserved.
-Licensed under the Apache License, Version 2.0 (the "License"); you may not use
-this file except in compliance with the License. You may obtain a copy of the
-License at http://www.apache.org/licenses/LICENSE-2.0
-
-THIS CODE IS PROVIDED ON AN *AS IS* BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
-KIND, EITHER EXPRESS OR IMPLIED, INCLUDING WITHOUT LIMITATION ANY IMPLIED
-WARRANTIES OR CONDITIONS OF TITLE, FITNESS FOR A PARTICULAR PURPOSE,
-MERCHANTABLITY OR NON-INFRINGEMENT.
-
-See the Apache Version 2.0 License for specific language governing permissions
-and limitations under the License.
-***************************************************************************** */
-
-var __assign = function() {
-    __assign = Object.assign || function __assign(t) {
-        for (var s, i = 1, n = arguments.length; i < n; i++) {
-            s = arguments[i];
-            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p)) t[p] = s[p];
-        }
-        return t;
-    };
-    return __assign.apply(this, arguments);
-};
+function applyChange(cm, change) {
+    cm.replaceRange(change.text.join("\n"), change.from, change.to);
+}
+function reverseApplyChange(cm, change) {
+    var postEditChangeRange = preEditToPostEditChangeRange(change);
+    // Want (0, 2) to (1, 1)
+    console.log("postEditChangeRange in reverseApplyChange", postEditChangeRange);
+    cm.replaceRange(change.removed.join("\n"), postEditChangeRange.from, postEditChangeRange.to);
+}
 
 /**
  * Given two changes, compose them to make another change that would have the exact same effect, if applied.
@@ -295,10 +304,5 @@ function splitTextByPositionDifference(text, furtherPos, earlierPos) {
     return splitTextAt(text, furtherPos.line - earlierPos.line, furtherPos.line === earlierPos.line ? furtherPos.ch - earlierPos.ch : furtherPos.ch);
 }
 
-var composeChanges$1 = composeChanges;
-var preEditToPostEditChangeRange$1 = preEditToPostEditChangeRange;
-var convertPointToAfterChange$1 = convertPointToAfterChange;
-var convertPointToBeforeChange$1 = convertPointToBeforeChange;
-
-export { composeChanges$1 as composeChanges, preEditToPostEditChangeRange$1 as preEditToPostEditChangeRange, convertPointToAfterChange$1 as convertPointToAfterChange, convertPointToBeforeChange$1 as convertPointToBeforeChange };
+export { composeChanges, applyChange, convertPointToBeforeChange, convertPointToAfterChange, preEditToPostEditChangeRange, reverseApplyChange };
 //# sourceMappingURL=codemirror-compose-change.es5.js.map

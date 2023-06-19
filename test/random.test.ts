@@ -1,18 +1,38 @@
 
-import {composeChanges} from "../src/codemirror-compose-change"
+import {makeRandomEditAndGetChange, setRandomContent} from "./RandomEdits";
+import {testChanges} from "./TestCore";
+import {getCodeMirror} from "./Util";
 
-/**
- * Dummy test
- */
+
+const numRepeats = 50;
+const delay = 1000;
+
+async function runRandomTest() {
+  let cm = getCodeMirror();
+
+  // Fill in random content
+  setRandomContent(cm);
+  // setAlphabeticalContent(cm);
+  let originalContent = cm.getValue();
+
+  const change1 = await makeRandomEditAndGetChange(cm, delay);
+  const change2 = await makeRandomEditAndGetChange(cm, delay);
+
+  window["lastChange1"] = change1;
+  window["lastChange2"] = change2;
+  testChanges(cm, originalContent, change1, change2);
+}
+
 describe("Dummy test", () => {
-  it("works if true is truthy", () => {
-    expect(true).toBeTruthy()
-  })
+  it("Runs random tests", async () => {
+    for (let i = 0; i < numRepeats; i += 1) {
+      console.log("Test repeats: " + i);
 
-  it("DummyClass is instantiable", () => {
-    expect(new DummyClass()).toBeInstanceOf(DummyClass)
-  })
-})
+      await runRandomTest();
+    }
+  });
+});
+
 
 // Load the script in a browser and use the static methods on this class to run tests
 // import {runAll} from "./FixedTests";
@@ -21,36 +41,6 @@ describe("Dummy test", () => {
 // import {getCodeMirror} from "./Util";
 // Keep this commented when building dist so test stuff doesn't end up in the bundle
 // export class TestRunner {
-//   static runFixedTests() {
-//     runAll();
-//   }
-
-//   static runRandomTests(repeats=1, delay=1000) {
-//     if (repeats === 0) {
-//       console.log("No further repeats to run!");
-//       return;
-//     }
-
-//     console.log("Test repeats remaining: " + repeats);
-
-//     let cm = getCodeMirror();
-
-//     // Fill in random content
-//     setRandomContent(cm);
-//     // setAlphabeticalContent(cm);
-//     let originalContent = cm.getValue();
-
-//     makeRandomEditAndGetChange(cm, delay).then((change1) => {
-//       makeRandomEditAndGetChange(cm, delay).then((change2) => {
-//         window["lastChange1"] = change1;
-//         window["lastChange2"] = change2;
-//         testChanges(cm, originalContent, change1, change2);
-
-//         this.runRandomTests(repeats - 1, delay);
-//       });
-//     })
-//   }
-
 //   static repeatLastTest() {
 //     let change1 = window["lastChange1"];
 //     let change2 = window["lastChange2"];

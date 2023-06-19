@@ -1,5 +1,5 @@
 
-import isEqual from "lodash-es/isEqual.js";
+import {isEqual} from "lodash";
 
 import {randomString} from "./Util";
 

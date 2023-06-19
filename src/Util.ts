@@ -19,20 +19,6 @@ export function rangesEqual(range1: FromTo, range2: FromTo) {
   return (posCmp(range1.from, range2.from) === 0) && (posCmp(range1.to, range2.to) === 0);
 }
 
-export function randomString(length: number, chars="0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ") {
-  let result = "";
-  for (let i = length; i > 0; --i) result += chars[Math.floor(Math.random() * chars.length)];
-  return result;
-}
-
-export function getCodeMirror(): CodeMirror.Doc {
-  let elem: any = document.querySelector(".CodeMirror");
-  if (!elem) throw new Error("Couldn't find CodeMirror elem");
-
-  if (!elem["CodeMirror"]) throw new Error("Couldn't find CodeMirror");
-  return elem["CodeMirror"];
-}
-
 export function last<T>(array: T[]): T | undefined {
   var length = array == null ? 0 : array.length;
   return length ? array[length - 1] : undefined;
