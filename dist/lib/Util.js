@@ -1,5 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.last = exports.rangesEqual = exports.posInsideRangeInclusive = exports.posInsideRange = exports.posCmp = void 0;
 // Return negative / 0 / positive.  a < b iff posCmp(a, b) < 0 etc.
 function posCmp(a, b) {
     return (a.line - b.line) || (a.ch - b.ch);

@@ -1,5 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.reverseApplyChange = exports.applyChange = exports.preEditToPostEditChangeRange = exports.convertPointToAfterChange = exports.convertPointToBeforeChange = void 0;
 var Util_1 = require("./Util");
 function convertPointToBeforeChange(point, change) {
     var linesInserted = change.text.length - change.removed.length;
@@ -18,7 +19,7 @@ function convertPointToBeforeChange(point, change) {
             ch: point.ch + adjustCh(change, removed, inserted)
         };
     }
-    else if (Util_1.posCmp(point, change.from) < 0) {
+    else if ((0, Util_1.posCmp)(point, change.from) < 0) {
         // Tried to convert point to before change but it was before change.from
         return point;
     }
@@ -40,7 +41,7 @@ function convertPointToAfterChange(point, change) {
             ch: point.ch + adjustCh(change, change.removed, change.text)
         };
     }
-    else if (Util_1.posCmp(point, change.from) < 0) {
+    else if ((0, Util_1.posCmp)(point, change.from) < 0) {
         // Tried to convert point to after change but it was before change.from
         return point;
     }
@@ -54,26 +55,26 @@ function adjustCh(change, removed, inserted) {
     var ch = 0;
     if (removed.length === 1 && inserted.length > 1) {
         // Single remove multiple insert
-        ch -= Util_1.last(removed).length;
-        ch += Util_1.last(inserted).length;
+        ch -= (0, Util_1.last)(removed).length;
+        ch += (0, Util_1.last)(inserted).length;
         ch -= change.from.ch;
     }
     else if (removed.length === 1 && inserted.length === 1) {
         // Single remove single insert
-        ch -= Util_1.last(removed).length;
-        ch += Util_1.last(inserted).length;
+        ch -= (0, Util_1.last)(removed).length;
+        ch += (0, Util_1.last)(inserted).length;
     }
     else if (removed.length > 1 && inserted.length === 1) {
         // Multiple remove single insert
         // If multiple lines were removed, and only one was added, then ch gets bumped forward by change.from.ch
-        ch -= Util_1.last(removed).length;
-        ch += Util_1.last(inserted).length;
+        ch -= (0, Util_1.last)(removed).length;
+        ch += (0, Util_1.last)(inserted).length;
         ch += change.from.ch;
     }
     else if (removed.length > 1 && inserted.length > 1) {
         // Multiple remove multiple insert
-        ch -= Util_1.last(removed).length;
-        ch += Util_1.last(inserted).length;
+        ch -= (0, Util_1.last)(removed).length;
+        ch += (0, Util_1.last)(inserted).length;
     }
     return ch;
 }
@@ -81,10 +82,10 @@ function preEditToPostEditChangeRange(change) {
     var line = change.from.line + change.text.length - 1;
     var ch;
     if (change.text.length === 1) {
-        ch = change.from.ch + Util_1.last(change.text).length;
+        ch = change.from.ch + (0, Util_1.last)(change.text).length;
     }
     else {
-        ch = Util_1.last(change.text).length;
+        ch = (0, Util_1.last)(change.text).length;
     }
     var to = { line: line, ch: ch };
     return {
