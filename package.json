@@ -1,6 +1,6 @@
 {
   "name": "@codedown/codemirror-compose-change",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "",
   "keywords": [],
   "main": "dist/index.umd.js",
@@ -15,9 +15,6 @@
     "url": "https://github.com/codedownio/codemirror-compose-change"
   },
   "license": "MIT",
-  "engines": {
-    "node": ">=6.0.0"
-  },
   "scripts": {
     "lint": "tslint  --project tsconfig.json -t codeFrame 'src/**/*.ts' 'test/**/*.ts'",
     "prebuild": "rimraf dist",
