@@ -1,5 +1,5 @@
 
-import DummyClass from "../src/codemirror-compose-change"
+import {composeChanges} from "../src/codemirror-compose-change"
 
 /**
  * Dummy test
